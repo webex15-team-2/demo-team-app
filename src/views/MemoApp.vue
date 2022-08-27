@@ -142,16 +142,18 @@ export default {
     },
 
     addTask(index) {
-      if (this.inputTask !== "") {
-        const task = {
-          id: this.oid++,
-          category_id: index + 1,
-          name: this.inputMemo,
-          isDone: false,
+      if (this.inputMemo) {
+        if (this.inputTask !== "") {
+          const task = {
+            id: this.oid++,
+            category_id: index + 1,
+            name: this.inputMemo,
+            isDone: false,
+          }
+          this.tasks.push(task)
+          this.inputMemo = ""
+          console.log(this.id)
         }
-        this.tasks.push(task)
-        this.inputMemo = ""
-        console.log(this.id)
       }
     },
 
@@ -210,6 +212,7 @@ export default {
   background-color: gray;
   margin: 0.5rem;
   padding: 0.5rem;
+  justify-content: space-between;
   /* padding-left: 5rem;
   padding-right: 5rem;
   display: flex;
@@ -222,13 +225,12 @@ export default {
 }
 
 .memo {
-  /* display: flex;
+  display: flex;
   justify-content: space-between;
-  align-items: center; */
+  align-items: center;
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 5px;
-  /* min-width: 512px; */
   background-color: white;
 }
 
@@ -242,9 +244,11 @@ export default {
 
 .add-memo-field__input {
   padding: 10px;
+  margin: 0rem 0.5rem;
 }
 .add-memo-field__button {
   padding: 0.5rem 0.5rem;
+  margin: 0rem 0.5rem;
   border: solid 1px black;
   border-radius: 5px;
   background-color: white;
